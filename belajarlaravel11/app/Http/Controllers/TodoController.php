@@ -18,6 +18,7 @@ class TodoController extends Controller
             $data=Todo::where('task', 'like', '%'.request('search').'%')->paginate($max_data)
             ->withQueryString();
         }else{
+            // melakukan sesuai abjad awal
             $data = Todo::orderBy('task', 'asc')->paginate($max_data);
         }
         return view('todo.app', compact('data'));
